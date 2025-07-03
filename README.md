@@ -42,7 +42,7 @@
   <!-- Login Overlay -->
   <div id="loginOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-80 flex items-center justify-center z-50">
     <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
-      <h2 class="text-2xl font-semibold mb-6 text-center text-blue-900">Login to DGclinR</h2>
+      <h2 class="text-2xl font-semibold mb-6 text-center text-blue-900">Login to Dklinity</h2>
       <form id="loginForm" class="space-y-4" autocomplete="off" novalidate>
         <div>
           <label for="username" class="block font-medium mb-1">Username</label>
@@ -255,7 +255,7 @@
     </main>
 
     <footer class="bg-blue-900 text-white py-4 text-center text-sm">
-      DGclinR &copy; 2024 Clinical Trials Database
+      DklinityclinR &copy; 2024 Clinical Trials Database
     </footer>
   </div>
 
