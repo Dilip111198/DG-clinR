@@ -1,9 +1,10 @@
-# DG-clinR
+# Dklinity
+<DNA helix logo
 <html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DGclinR - Clinical Trials Database with ARM & References</title>
+  <title>Dklinity - Clinical Trials Database with ARM & References</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link
     rel="stylesheet"
@@ -63,7 +64,7 @@
     <header class="bg-blue-900 text-white shadow">
       <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between">
         <h1 class="text-2xl font-semibold flex items-center gap-2">
-          <i class="fas fa-database"></i> DGclinR
+          <i class="fas fa-database"></i> Dklinity
         </h1>
         <nav class="mt-3 md:mt-0">
           <ul class="flex flex-wrap gap-4 text-sm md:text-base">
