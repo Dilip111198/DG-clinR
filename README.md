@@ -1,4 +1,3 @@
-Dklinity
 <html lang="en" >
 <head>
   <meta charset="UTF-8" />
@@ -68,7 +67,7 @@ Dklinity
         <nav class="mt-3 md:mt-0">
           <ul class="flex flex-wrap gap-4 text-sm md:text-base">
             <li><a href="#search" class="hover:underline">Search Trials</a></li>
-            <li><a href="#add-trial" class="hover:underline">Add Trial</a></li>
+            <li><a href="#add-trial" class="hover:underline">Add New Trial</a></li>
           </ul>
         </nav>
       </div>
@@ -78,24 +77,34 @@ Dklinity
       <!-- Trial Search Section -->
       <section id="search" class="mb-12">
         <h2 class="text-3xl font-semibold mb-4 text-blue-900 flex items-center gap-3">
-          <i class="fas fa-search"></i> Search Clinical Trials
+          <i class="fas fa-search"></i> Search Trials
         </h2>
         <form id="trialSearchForm" class="bg-white p-6 rounded-lg shadow-md grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div>
+          <div class="md:col-span-2">
             <label for="searchTrialId" class="block font-medium mb-1">Trial ID</label>
-            <input type="text" id="searchTrialId" name="trial_id" placeholder="e.g. 1" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+            <input type="text" id="searchTrialId" name="trial_id" placeholder="e.g. ABC123 or 1" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
           </div>
-          <div>
-            <label for="searchOtherStudyId" class="block font-medium mb-1">Other Study ID</label>
-            <input type="text" id="searchOtherStudyId" name="other_study_id" placeholder="Other Study ID" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+          <div class="md:col-span-2">
+            <label class="block font-medium mb-1">Other Study ID(s)</label>
+            <div id="searchOtherStudyIdsContainer" class="space-y-2">
+              <input type="text" name="other_study_id" placeholder="Other Study ID" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+            </div>
+            <button type="button" id="addSearchOtherStudyIdBtn" class="mt-2 text-blue-700 hover:underline text-sm flex items-center gap-1">
+              <i class="fas fa-plus"></i> Add another Other Study ID
+            </button>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block font-medium mb-1">Indication(s)</label>
+            <div id="searchIndicationsContainer" class="space-y-2">
+              <input type="text" name="indication" placeholder="Indication" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+            </div>
+            <button type="button" id="addSearchIndicationBtn" class="mt-2 text-blue-700 hover:underline text-sm flex items-center gap-1">
+              <i class="fas fa-plus"></i> Add another Indication
+            </button>
           </div>
           <div>
             <label for="searchTitle" class="block font-medium mb-1">Title</label>
             <input type="text" id="searchTitle" name="title" placeholder="Trial title keywords" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div>
-            <label for="searchIndication" class="block font-medium mb-1">Indication</label>
-            <input type="text" id="searchIndication" name="indication" placeholder="Disease or condition" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
           </div>
           <div>
             <label for="searchPhase" class="block font-medium mb-1">Phase</label>
@@ -132,24 +141,34 @@ Dklinity
       <!-- Add Trial Section -->
       <section id="add-trial" class="mb-12">
         <h2 class="text-3xl font-semibold mb-4 text-blue-900 flex items-center gap-3">
-          <i class="fas fa-plus-circle"></i> Add New Clinical Trial
+          <i class="fas fa-plus-circle"></i> Add New Trial
         </h2>
         <form id="addTrialForm" class="bg-white p-6 rounded-lg shadow-md grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
-          <div>
+          <div class="md:col-span-2">
             <label for="trialId" class="block font-medium mb-1">Trial ID *</label>
-            <input type="number" id="trialId" name="trial_id" required placeholder="Unique Trial ID" min="1" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+            <input type="text" id="trialId" name="trial_id" required placeholder="Unique Trial ID (can include letters and numbers)" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+          </div>
+          <div class="md:col-span-2">
+            <label class="block font-medium mb-1">Other Study ID(s)</label>
+            <div id="addOtherStudyIdsContainer" class="space-y-2">
+              <input type="text" name="other_study_id" placeholder="Other Study ID" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+            </div>
+            <button type="button" id="addOtherStudyIdBtn" class="mt-2 text-blue-700 hover:underline text-sm flex items-center gap-1">
+              <i class="fas fa-plus"></i> Add another Other Study ID
+            </button>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block font-medium mb-1">Indication(s)</label>
+            <div id="addIndicationsContainer" class="space-y-2">
+              <input type="text" name="indication" placeholder="Indication" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+            </div>
+            <button type="button" id="addIndicationBtn" class="mt-2 text-blue-700 hover:underline text-sm flex items-center gap-1">
+              <i class="fas fa-plus"></i> Add another Indication
+            </button>
           </div>
           <div>
             <label for="trialTitle" class="block font-medium mb-1">Title *</label>
             <input type="text" id="trialTitle" name="title" required placeholder="Trial title" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div>
-            <label for="trialOtherStudyId" class="block font-medium mb-1">Other Study ID</label>
-            <input type="text" id="trialOtherStudyId" name="other_study_id" placeholder="Other Study ID" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div>
-            <label for="trialIndication" class="block font-medium mb-1">Indication</label>
-            <input type="text" id="trialIndication" name="indication" placeholder="Disease or condition" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
           </div>
           <div>
             <label for="trialEnrollment" class="block font-medium mb-1">Enrollment</label>
@@ -190,11 +209,14 @@ Dklinity
             <label for="trialSponsor" class="block font-medium mb-1">Sponsor</label>
             <input type="text" id="trialSponsor" name="sponsor" placeholder="Sponsor company name" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
           </div>
-          <div>
-            <label for="trialProductTags" class="block font-medium mb-1">Product Tags</label>
-            <select id="trialProductTags" name="product_tags" multiple size="4" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600">
-            </select>
-            <p class="text-xs text-gray-500 mt-1">Hold Ctrl (Cmd on Mac) to select multiple products.</p>
+          <div class="md:col-span-2">
+            <label class="block font-medium mb-1">Product Tags</label>
+            <div id="productTagsContainer" class="space-y-2">
+              <input type="text" name="product_tag" placeholder="Product name" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+            </div>
+            <button type="button" id="addProductTagBtn" class="mt-2 text-blue-700 hover:underline text-sm flex items-center gap-1">
+              <i class="fas fa-plus"></i> Add another Product
+            </button>
           </div>
           <div>
             <label for="trialAllocation" class="block font-medium mb-1">Allocation</label>
@@ -254,7 +276,7 @@ Dklinity
     </main>
 
     <footer class="bg-blue-900 text-white py-4 text-center text-sm">
-      DklinityclinR &copy; 2024 Clinical Trials Database
+      Dklinity &copy; 2024 Clinical Trials Database
     </footer>
   </div>
 
@@ -308,45 +330,110 @@ Dklinity
       }, 5000);
     }
 
-    // Populate product tags select on page load and when products change
-    function populateProductTags() {
-      const select = document.getElementById('trialProductTags');
-      if (!select) return;
-      select.innerHTML = '';
-      products.forEach(p => {
-        const option = document.createElement('option');
-        option.value = p.name;
-        option.textContent = p.name;
-        select.appendChild(option);
-      });
-    }
+    // Add Other Study ID input fields dynamically (Add Trial Form)
+    const addOtherStudyIdBtn = document.getElementById('addOtherStudyIdBtn');
+    const addOtherStudyIdsContainer = document.getElementById('addOtherStudyIdsContainer');
+    addOtherStudyIdBtn.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'other_study_id';
+      input.placeholder = 'Other Study ID';
+      input.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      addOtherStudyIdsContainer.appendChild(input);
+    });
+
+    // Add Indication input fields dynamically (Add Trial Form)
+    const addIndicationBtn = document.getElementById('addIndicationBtn');
+    const addIndicationsContainer = document.getElementById('addIndicationsContainer');
+    addIndicationBtn.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'indication';
+      input.placeholder = 'Indication';
+      input.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      addIndicationsContainer.appendChild(input);
+    });
+
+    // Add Other Study ID input fields dynamically (Search Form)
+    const addSearchOtherStudyIdBtn = document.getElementById('addSearchOtherStudyIdBtn');
+    const searchOtherStudyIdsContainer = document.getElementById('searchOtherStudyIdsContainer');
+    addSearchOtherStudyIdBtn.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'other_study_id';
+      input.placeholder = 'Other Study ID';
+      input.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      searchOtherStudyIdsContainer.appendChild(input);
+    });
+
+    // Add Indication input fields dynamically (Search Form)
+    const addSearchIndicationBtn = document.getElementById('addSearchIndicationBtn');
+    const searchIndicationsContainer = document.getElementById('searchIndicationsContainer');
+    addSearchIndicationBtn.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'indication';
+      input.placeholder = 'Indication';
+      input.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      searchIndicationsContainer.appendChild(input);
+    });
+
+    // Add Product Tag input fields dynamically (Add Trial Form)
+    const addProductTagBtn = document.getElementById('addProductTagBtn');
+    const productTagsContainer = document.getElementById('productTagsContainer');
+    addProductTagBtn.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'product_tag';
+      input.placeholder = 'Product name';
+      input.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      productTagsContainer.appendChild(input);
+    });
 
     // Add Trial Form Submission
     document.getElementById('addTrialForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const formData = new FormData(this);
-      const trial_id_raw = formData.get('trial_id');
-      const trial_id = trial_id_raw ? parseInt(trial_id_raw) : null;
-      if (!trial_id || trial_id < 1) {
-        showMessage('addTrialMessage', 'Trial ID is required and must be a positive number.', true);
+      const trial_id = formData.get('trial_id').trim();
+      if (!trial_id) {
+        showMessage('addTrialMessage', 'Trial ID is required.', true);
         return;
       }
       // Check for duplicate trial_id
       if (trials.some(t => t.id === trial_id)) {
-        showMessage('addTrialMessage', `Trial ID ${trial_id} already exists. Please use a unique Trial ID.`, true);
+        showMessage('addTrialMessage', `Trial ID "${trial_id}" already exists. Please use a unique Trial ID.`, true);
         return;
       }
       const title = formData.get('title').trim();
-      const other_study_id = formData.get('other_study_id').trim() || null;
-      const indication = formData.get('indication').trim();
+      if (!title) {
+        showMessage('addTrialMessage', 'Title is required.', true);
+        return;
+      }
+      // Collect multiple other_study_id inputs
+      const other_study_ids = [];
+      this.querySelectorAll('input[name="other_study_id"]').forEach(input => {
+        const val = input.value.trim();
+        if (val) other_study_ids.push(val);
+      });
+      // Collect multiple indications inputs
+      const indications = [];
+      this.querySelectorAll('input[name="indication"]').forEach(input => {
+        const val = input.value.trim();
+        if (val) indications.push(val);
+      });
       const enrollmentRaw = formData.get('enrollment');
       const enrollment = enrollmentRaw ? parseInt(enrollmentRaw) : null;
       const phase = formData.get('phase');
       const study_type = formData.get('study_type') || null;
       const status = formData.get('status');
       const sponsor = formData.get('sponsor').trim() || null;
-      const product_tags_raw = formData.getAll('product_tags');
-      const product_tags = product_tags_raw.length ? product_tags_raw : [];
+      // Collect multiple product_tag inputs
+      const product_tags = [];
+      this.querySelectorAll('input[name="product_tag"]').forEach(input => {
+        const val = input.value.trim();
+        if (val) product_tags.push(val);
+      });
+
       const allocation = formData.get('allocation') || null;
       const start_date = formData.get('start_date') || null;
       const end_date = formData.get('end_date') || null;
@@ -354,8 +441,8 @@ Dklinity
       const newTrial = {
         id: trial_id,
         title,
-        other_study_id,
-        indication: indication || null,
+        other_study_id: other_study_ids.length ? other_study_ids : null,
+        indication: indications.length ? indications : null,
         enrollment,
         phase: phase || null,
         study_type,
@@ -369,7 +456,32 @@ Dklinity
       };
       trials.push(newTrial);
       this.reset();
-      showMessage('addTrialMessage', `Trial ID ${newTrial.id} added successfully.`);
+      // Reset dynamic inputs to one input each
+      addOtherStudyIdsContainer.innerHTML = '';
+      const firstOtherStudyInput = document.createElement('input');
+      firstOtherStudyInput.type = 'text';
+      firstOtherStudyInput.name = 'other_study_id';
+      firstOtherStudyInput.placeholder = 'Other Study ID';
+      firstOtherStudyInput.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      addOtherStudyIdsContainer.appendChild(firstOtherStudyInput);
+
+      addIndicationsContainer.innerHTML = '';
+      const firstIndicationInput = document.createElement('input');
+      firstIndicationInput.type = 'text';
+      firstIndicationInput.name = 'indication';
+      firstIndicationInput.placeholder = 'Indication';
+      firstIndicationInput.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      addIndicationsContainer.appendChild(firstIndicationInput);
+
+      productTagsContainer.innerHTML = '';
+      const firstProductTagInput = document.createElement('input');
+      firstProductTagInput.type = 'text';
+      firstProductTagInput.name = 'product_tag';
+      firstProductTagInput.placeholder = 'Product name';
+      firstProductTagInput.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      productTagsContainer.appendChild(firstProductTagInput);
+
+      showMessage('addTrialMessage', `Trial ID "${newTrial.id}" added successfully.`);
 
       loadTrialDetails(newTrial.id);
       document.getElementById('trialDetailsSection').scrollIntoView({ behavior: 'smooth' });
@@ -379,22 +491,55 @@ Dklinity
     document.getElementById('trialSearchForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const formData = new FormData(this);
-      const trialId = formData.get('trial_id').trim();
-      const otherStudyId = formData.get('other_study_id').trim().toLowerCase();
+      const trialId = formData.get('trial_id').trim().toLowerCase();
+
+      // Collect multiple other_study_id inputs
+      const otherStudyIds = [];
+      this.querySelectorAll('input[name="other_study_id"]').forEach(input => {
+        const val = input.value.trim().toLowerCase();
+        if (val) otherStudyIds.push(val);
+      });
+
+      // Collect multiple indications inputs
+      const indications = [];
+      this.querySelectorAll('input[name="indication"]').forEach(input => {
+        const val = input.value.trim().toLowerCase();
+        if (val) indications.push(val);
+      });
+
       const title = formData.get('title').trim().toLowerCase();
-      const indication = formData.get('indication').trim().toLowerCase();
       const phase = formData.get('phase');
       const status = formData.get('status');
 
       let results = trials.filter(trial => {
-        return (
-          (trialId === '' || trial.id.toString() === trialId) &&
-          (otherStudyId === '' || (trial.other_study_id && trial.other_study_id.toLowerCase() === otherStudyId)) &&
-          (title === '' || trial.title.toLowerCase().includes(title)) &&
-          (indication === '' || (trial.indication && trial.indication.toLowerCase().includes(indication))) &&
-          (phase === '' || trial.phase === phase) &&
-          (status === '' || trial.status === status)
-        );
+        // Trial ID match (case insensitive)
+        const trialIdMatch = trialId === '' || (trial.id && trial.id.toLowerCase().includes(trialId));
+        // Other Study ID match: any of the entered otherStudyIds matches any in trial.other_study_id array (case insensitive)
+        let otherStudyIdMatch = true;
+        if (otherStudyIds.length > 0) {
+          if (!trial.other_study_id || !Array.isArray(trial.other_study_id)) {
+            otherStudyIdMatch = false;
+          } else {
+            otherStudyIdMatch = otherStudyIds.some(osid => trial.other_study_id.some(tosid => tosid.toLowerCase() === osid));
+          }
+        }
+        // Indication match: any of the entered indications matches any in trial.indication array (case insensitive)
+        let indicationMatch = true;
+        if (indications.length > 0) {
+          if (!trial.indication || !Array.isArray(trial.indication)) {
+            indicationMatch = false;
+          } else {
+            indicationMatch = indications.some(ind => trial.indication.some(tind => tind.toLowerCase().includes(ind)));
+          }
+        }
+        // Title match
+        const titleMatch = title === '' || (trial.title && trial.title.toLowerCase().includes(title));
+        // Phase match
+        const phaseMatch = phase === '' || trial.phase === phase;
+        // Status match
+        const statusMatch = status === '' || trial.status === status;
+
+        return trialIdMatch && otherStudyIdMatch && indicationMatch && titleMatch && phaseMatch && statusMatch;
       });
 
       const resultsContainer = document.getElementById('searchResults');
@@ -408,9 +553,9 @@ Dklinity
           <thead class="bg-blue-900 text-white">
             <tr>
               <th class="px-4 py-2 text-left">Trial ID</th>
-              <th class="px-4 py-2 text-left">Other Study ID</th>
+              <th class="px-4 py-2 text-left">Other Study ID(s)</th>
               <th class="px-4 py-2 text-left">Title</th>
-              <th class="px-4 py-2 text-left">Indication</th>
+              <th class="px-4 py-2 text-left">Indication(s)</th>
               <th class="px-4 py-2 text-left">Enrollment</th>
               <th class="px-4 py-2 text-left">Phase</th>
               <th class="px-4 py-2 text-left">Study Type</th>
@@ -428,9 +573,9 @@ Dklinity
       for (const trial of results) {
         html += `<tr class="border-t border-gray-200 hover:bg-gray-100" tabindex="0" aria-label="View or edit trial ${trial.id}">
           <td class="px-4 py-2">${trial.id}</td>
-          <td class="px-4 py-2">${trial.other_study_id || ''}</td>
+          <td class="px-4 py-2">${trial.other_study_id && Array.isArray(trial.other_study_id) ? trial.other_study_id.join(', ') : ''}</td>
           <td class="px-4 py-2">${trial.title}</td>
-          <td class="px-4 py-2">${trial.indication || ''}</td>
+          <td class="px-4 py-2">${trial.indication && Array.isArray(trial.indication) ? trial.indication.join(', ') : ''}</td>
           <td class="px-4 py-2">${trial.enrollment !== null && trial.enrollment !== undefined ? trial.enrollment : ''}</td>
           <td class="px-4 py-2">${trial.phase || ''}</td>
           <td class="px-4 py-2">${trial.study_type || ''}</td>
@@ -455,7 +600,7 @@ Dklinity
       const editButtons = resultsContainer.querySelectorAll('.view-edit-btn');
       editButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-          const trialId = parseInt(btn.getAttribute('data-trial-id'));
+          const trialId = btn.getAttribute('data-trial-id');
           loadTrialDetails(trialId);
           document.getElementById('trialDetailsSection').scrollIntoView({ behavior: 'smooth' });
         });
@@ -473,9 +618,9 @@ Dklinity
 
       const summary = `
         <div><strong>Trial ID:</strong> ${trial.id}</div>
-        <div><strong>Other Study ID:</strong> ${trial.other_study_id || 'N/A'}</div>
+        <div><strong>Other Study ID(s):</strong> ${trial.other_study_id && Array.isArray(trial.other_study_id) ? trial.other_study_id.join(', ') : 'N/A'}</div>
         <div><strong>Title:</strong> ${trial.title}</div>
-        <div><strong>Indication:</strong> ${trial.indication || 'N/A'}</div>
+        <div><strong>Indication(s):</strong> ${trial.indication && Array.isArray(trial.indication) ? trial.indication.join(', ') : 'N/A'}</div>
         <div><strong>Enrollment:</strong> ${trial.enrollment !== null && trial.enrollment !== undefined ? trial.enrollment : 'N/A'}</div>
         <div><strong>Phase:</strong> ${trial.phase || 'N/A'}</div>
         <div><strong>Study Type:</strong> ${trial.study_type || 'N/A'}</div>
@@ -584,6 +729,7 @@ Dklinity
 
     // === PRODUCTS TAB ===
     // ARM wise product addition with dose and dosage details
+    // Product Name is free text input to allow pasting or typing product names
     function renderProductsTab(container, trialId) {
       const arms = getArms(trialId);
       // Products linked to trial with arm info
@@ -614,10 +760,9 @@ Dklinity
             </thead>
             <tbody>
               ${trialProds.map(tp => {
-                const prod = products.find(p => p.id === tp.product_id);
                 return `<tr class="border-t border-gray-200 hover:bg-gray-100">
                   <td class="px-3 py-1">${tp.arm}</td>
-                  <td class="px-3 py-1">${prod ? prod.name : ''}</td>
+                  <td class="px-3 py-1">${tp.product_name || ''}</td>
                   <td class="px-3 py-1">${tp.dose || ''}</td>
                   <td class="px-3 py-1">${tp.dosage_details || ''}</td>
                   <td class="px-3 py-1">
@@ -643,7 +788,7 @@ Dklinity
           </div>
           <div>
             <label for="productName" class="block font-medium mb-1">Product Name *</label>
-            <input type="text" id="productName" name="name" placeholder="Product name" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required />
+            <input type="text" id="productName" name="product_name" placeholder="Product name (free text)" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required />
           </div>
           <div>
             <label for="productDose" class="block font-medium mb-1">Dose</label>
@@ -690,8 +835,8 @@ Dklinity
         const form = e.target;
         const editId = form.product_edit_id.value;
         const arm = form.arm.value.trim();
-        const name = form.name.value.trim();
-        if (!arm || !name) {
+        const product_name = form.product_name.value.trim();
+        if (!arm || !product_name) {
           showProductFormMessage('ARM and Product Name are required.', true);
           return;
         }
@@ -703,20 +848,6 @@ Dklinity
         // Add arm if new
         addArm(currentTrialId, arm);
 
-        // Check if product exists by name (case insensitive)
-        let prod = products.find(p => p.name.toLowerCase() === name.toLowerCase());
-        if (!prod) {
-          prod = {
-            id: generateId(products),
-            name,
-            moa: null,
-            target: null,
-            description: null
-          };
-          products.push(prod);
-          populateProductTags();
-        }
-
         if (editId) {
           // Edit existing trial_product entry
           const tpId = parseInt(editId);
@@ -726,7 +857,7 @@ Dklinity
             return;
           }
           trial_products[tpIndex].arm = arm;
-          trial_products[tpIndex].product_id = prod.id;
+          trial_products[tpIndex].product_name = product_name;
           trial_products[tpIndex].dose = dose;
           trial_products[tpIndex].dosage_details = dosage_details;
           showProductFormMessage('Product updated successfully.');
@@ -736,7 +867,7 @@ Dklinity
             id: generateId(trial_products),
             trial_id: currentTrialId,
             arm,
-            product_id: prod.id,
+            product_name,
             dose,
             dosage_details
           });
@@ -756,11 +887,10 @@ Dklinity
           const tpId = parseInt(btn.getAttribute('data-tp-id'));
           const tp = trial_products.find(t => t.id === tpId);
           if (!tp) return;
-          const prod = products.find(p => p.id === tp.product_id);
           const form = document.getElementById('addProductForm');
           form.product_edit_id.value = tp.id;
           form.arm.value = tp.arm;
-          form.name.value = prod ? prod.name : '';
+          form.product_name.value = tp.product_name || '';
           form.dose.value = tp.dose || '';
           form.dosage_details.value = tp.dosage_details || '';
           form.source_name.value = '';
@@ -793,661 +923,54 @@ Dklinity
       }
     }
 
-    // === PATIENTS TAB ===
-    // ARM wise patient N, free text box for table with formatting (contenteditable div)
-    function renderPatientsTab(container, trialId) {
-      const arms = getArms(trialId);
-      // Count patients per arm
-      const armCounts = {};
-      patients.filter(p => p.trial_id === trialId).forEach(p => {
-        if (!armCounts[p.arm]) armCounts[p.arm] = 0;
-        armCounts[p.arm]++;
-      });
-
-      let html = `
-        <div class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <h3 class="text-xl font-semibold text-blue-900">Patients (ARM-wise)</h3>
-          <button id="showAddPatientFormBtn" class="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-600 transition text-sm flex items-center gap-2">
-            <i class="fas fa-plus"></i> Add Patient
-          </button>
-        </div>
-      `;
-
-      if (arms.length === 0) {
-        html += `<p class="text-gray-600 italic mb-4">No ARMs defined yet. Add products to define ARMs.</p>`;
-      } else {
-        html += `<div class="mb-4 grid grid-cols-1 md:grid-cols-${arms.length} gap-4">`;
-        arms.forEach(arm => {
-          html += `<div class="border border-gray-300 rounded p-3 bg-gray-50">
-            <h4 class="font-semibold mb-2">${arm}</h4>
-            <p>Patient N: ${armCounts[arm] || 0}</p>
-          </div>`;
-        });
-        html += `</div>`;
-      }
-
-      // Free text box for patient table (contenteditable)
-      html += `
-        <label class="block font-semibold mb-1">Patient Table (Editable)</label>
-        <div id="patientTableEditable" contenteditable="true" class="editable-table" spellcheck="false" aria-label="Editable patient table"></div>
-        <div class="mt-2 text-sm text-gray-500">You can paste or type patient data here. Use keyboard shortcuts for formatting.</div>
-      `;
-
-      // Reference inputs
-      html += `
-        <form id="patientReferenceForm" class="mt-6 max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label for="patientSourceName" class="block font-medium mb-1">Reference Source Name</label>
-            <input type="text" id="patientSourceName" name="source_name" placeholder="Source name" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div>
-            <label for="patientReferenceLink" class="block font-medium mb-1">Reference Link</label>
-            <input type="url" id="patientReferenceLink" name="reference_link" placeholder="https://example.com" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div class="md:col-span-2 flex justify-end gap-4">
-            <button type="button" id="savePatientReferenceBtn" class="bg-green-700 text-white font-semibold rounded px-6 py-2 hover:bg-green-600 transition">
-              <i class="fas fa-save mr-2"></i> Save Reference
-            </button>
-          </div>
-          <div id="patientReferenceMessage" class="md:col-span-2 text-sm mt-2"></div>
-        </form>
-      `;
-
-      container.innerHTML = html;
-
-      // Add patient form button (opens modal or alert for demo)
-      document.getElementById('showAddPatientFormBtn').addEventListener('click', () => {
-        alert('Add Patient form not implemented in this demo.');
-      });
-
-      // Save reference button
-      document.getElementById('savePatientReferenceBtn').addEventListener('click', () => {
-        const source_name = document.getElementById('patientSourceName').value.trim();
-        const reference_link = document.getElementById('patientReferenceLink').value.trim();
-        if (!source_name || !reference_link) {
-          showPatientReferenceMessage('Source name and link are required.', true);
-          return;
-        }
-        addReference(currentTrialId, 'patients', source_name, reference_link);
-        showPatientReferenceMessage('Reference saved.');
-        document.getElementById('patientSourceName').value = '';
-        document.getElementById('patientReferenceLink').value = '';
-      });
-
-      function showPatientReferenceMessage(msg, isError = false) {
-        const el = document.getElementById('patientReferenceMessage');
-        el.textContent = msg;
-        el.className = isError ? 'text-sm mt-2 text-red-600' : 'text-sm mt-2 text-green-600';
-        if (msg) setTimeout(() => { el.textContent = ''; }, 4000);
-      }
-    }
-
-    // === ADVERSE EVENTS TAB ===
-    // ARM wise adverse event details, free text box with formatting
-    function renderAdverseEventsTab(container, trialId) {
-      const arms = getArms(trialId);
-
-      let html = `
-        <div class="mb-4">
-          <h3 class="text-xl font-semibold text-blue-900">Adverse Events (ARM-wise)</h3>
-        </div>
-      `;
-
-      if (arms.length === 0) {
-        html += `<p class="text-gray-600 italic mb-4">No ARMs defined yet. Add products to define ARMs.</p>`;
-      } else {
-        arms.forEach(arm => {
-          html += `<div class="border border-gray-300 rounded p-3 bg-gray-50 mb-4">
-            <h4 class="font-semibold mb-2">${arm}</h4>
-            <p>Adverse event details for ${arm} can be added below.</p>
-          </div>`;
-        });
-      }
-
-      // Free text box for adverse event table (contenteditable)
-      html += `
-        <label class="block font-semibold mb-1">Adverse Event Table (Editable)</label>
-        <div id="aeTableEditable" contenteditable="true" class="editable-table" spellcheck="false" aria-label="Editable adverse event table"></div>
-        <div class="mt-2 text-sm text-gray-500">You can paste or type adverse event data here. Use keyboard shortcuts for formatting.</div>
-      `;
-
-      // Reference inputs
-      html += `
-        <form id="aeReferenceForm" class="mt-6 max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label for="aeSourceName" class="block font-medium mb-1">Reference Source Name</label>
-            <input type="text" id="aeSourceName" name="source_name" placeholder="Source name" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div>
-            <label for="aeReferenceLink" class="block font-medium mb-1">Reference Link</label>
-            <input type="url" id="aeReferenceLink" name="reference_link" placeholder="https://example.com" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div class="md:col-span-2 flex justify-end gap-4">
-            <button type="button" id="saveAEReferenceBtn" class="bg-green-700 text-white font-semibold rounded px-6 py-2 hover:bg-green-600 transition">
-              <i class="fas fa-save mr-2"></i> Save Reference
-            </button>
-          </div>
-          <div id="aeReferenceMessage" class="md:col-span-2 text-sm mt-2"></div>
-        </form>
-      `;
-
-      container.innerHTML = html;
-
-      document.getElementById('saveAEReferenceBtn').addEventListener('click', () => {
-        const source_name = document.getElementById('aeSourceName').value.trim();
-        const reference_link = document.getElementById('aeReferenceLink').value.trim();
-        if (!source_name || !reference_link) {
-          showAEReferenceMessage('Source name and link are required.', true);
-          return;
-        }
-        addReference(currentTrialId, 'adverseEvents', source_name, reference_link);
-        showAEReferenceMessage('Reference saved.');
-        document.getElementById('aeSourceName').value = '';
-        document.getElementById('aeReferenceLink').value = '';
-      });
-
-      function showAEReferenceMessage(msg, isError = false) {
-        const el = document.getElementById('aeReferenceMessage');
-        el.textContent = msg;
-        el.className = isError ? 'text-sm mt-2 text-red-600' : 'text-sm mt-2 text-green-600';
-        if (msg) setTimeout(() => { el.textContent = ''; }, 4000);
-      }
-    }
-
-    // === RESPONSE DATA TAB ===
-    // patient N, arm, response type, percentage value
-    function renderResponseDataTab(container, trialId) {
-      const arms = getArms(trialId);
-
-      // Count patients per arm
-      const armCounts = {};
-      patients.filter(p => p.trial_id === trialId).forEach(p => {
-        if (!armCounts[p.arm]) armCounts[p.arm] = 0;
-      });
-
-      // Response data for trial
-      const trialResponses = responseData.filter(rd => {
-        const p = patients.find(pat => pat.id === rd.patient_id);
-        return p && p.trial_id === trialId;
-      });
-
-      let html = `
-        <div class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <h3 class="text-xl font-semibold text-blue-900">Response Data</h3>
-          <button id="showAddResponseFormBtn" class="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-600 transition text-sm flex items-center gap-2">
-            <i class="fas fa-plus"></i> Add Response Data
-          </button>
-        </div>
-      `;
-
-      if (trialResponses.length === 0) {
-        html += `<p class="text-gray-600 italic mb-4">No response data recorded yet.</p>`;
-      } else {
-        html += `<div class="overflow-x-auto max-h-64 scrollbar-thin border border-gray-300 rounded">
-          <table class="min-w-full border-collapse border border-gray-300 text-sm">
-            <thead class="bg-blue-900 text-white">
-              <tr>
-                <th class="px-3 py-2 text-left">Patient Code</th>
-                <th class="px-3 py-2 text-left">ARM</th>
-                <th class="px-3 py-2 text-left">Response Type</th>
-                <th class="px-3 py-2 text-left">Percentage Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${trialResponses.map(rd => {
-                const p = patients.find(pat => pat.id === rd.patient_id);
-                return `<tr class="border-t border-gray-200 hover:bg-gray-100">
-                  <td class="px-3 py-1">${p ? p.patient_code : ''}</td>
-                  <td class="px-3 py-1">${p ? p.arm : ''}</td>
-                  <td class="px-3 py-1">${rd.response_type || ''}</td>
-                  <td class="px-3 py-1">${rd.response_value || ''}</td>
-                </tr>`;
-              }).join('')}
-            </tbody>
-          </table>
-        </div>`;
-      }
-
-      // Add Response Data Form (hidden initially)
-      html += `
-        <form id="addResponseForm" class="mt-6 bg-gray-50 p-4 rounded shadow-md max-w-3xl hidden grid grid-cols-1 md:grid-cols-2 gap-4" novalidate>
-          <h4 class="md:col-span-2 text-lg font-semibold text-blue-900">Add Response Data</h4>
-          <div>
-            <label for="responsePatientN" class="block font-medium mb-1">Patient N *</label>
-            <input type="text" id="responsePatientN" name="patient_code" placeholder="Patient code" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required />
-          </div>
-          <div>
-            <label for="responseArm" class="block font-medium mb-1">ARM *</label>
-            <input type="text" id="responseArm" name="arm" placeholder="ARM name" list="armsList" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required />
-            <datalist id="armsList">${getArms(currentTrialId).map(a => `<option value="${a}"></option>`).join('')}</datalist>
-          </div>
-          <div>
-            <label for="responseType" class="block font-medium mb-1">Response Type *</label>
-            <input type="text" id="responseType" name="response_type" placeholder="e.g. Partial Response" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required />
-          </div>
-          <div>
-            <label for="responseValue" class="block font-medium mb-1">Percentage Value *</label>
-            <input type="number" id="responseValue" name="response_value" min="0" max="100" step="0.01" placeholder="%" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required />
-          </div>
-          <div class="md:col-span-2">
-            <label for="responseSourceName" class="block font-medium mb-1">Reference Source Name</label>
-            <input type="text" id="responseSourceName" name="source_name" placeholder="Source name" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div class="md:col-span-2">
-            <label for="responseReferenceLink" class="block font-medium mb-1">Reference Link</label>
-            <input type="url" id="responseReferenceLink" name="reference_link" placeholder="https://example.com" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div class="md:col-span-2 flex justify-end gap-4">
-            <button type="button" id="cancelResponseBtn" class="bg-gray-400 text-white font-semibold rounded px-6 py-2 hover:bg-gray-500 transition">Cancel</button>
-            <button type="submit" class="bg-green-700 text-white font-semibold rounded px-6 py-2 hover:bg-green-600 transition">
-              <i class="fas fa-save mr-2"></i> Save Response Data
-            </button>
-          </div>
-          <div id="responseFormMessage" class="md:col-span-2 text-sm mt-2"></div>
-        </form>
-      `;
-
-      container.innerHTML = html;
-
-      document.getElementById('showAddResponseFormBtn').addEventListener('click', () => {
-        resetResponseForm();
-        document.getElementById('addResponseForm').classList.remove('hidden');
-        document.getElementById('responsePatientN').focus();
-      });
-
-      document.getElementById('cancelResponseBtn').addEventListener('click', () => {
-        resetResponseForm();
-        document.getElementById('addResponseForm').classList.add('hidden');
-      });
-
-      document.getElementById('addResponseForm').addEventListener('submit', e => {
-        e.preventDefault();
-        const form = e.target;
-        const patient_code = form.patient_code.value.trim();
-        const arm = form.arm.value.trim();
-        const response_type = form.response_type.value.trim();
-        const response_value = form.response_value.value.trim();
-        const source_name = form.source_name.value.trim() || null;
-        const reference_link = form.reference_link.value.trim() || null;
-
-        if (!patient_code || !arm || !response_type || !response_value) {
-          showResponseFormMessage('All fields except references are required.', true);
-          return;
-        }
-
-        // Find or create patient with patient_code and arm
-        let patient = patients.find(p => p.patient_code.toLowerCase() === patient_code.toLowerCase() && p.trial_id === currentTrialId);
-        if (!patient) {
-          patient = {
-            id: generateId(patients),
-            trial_id: currentTrialId,
-            patient_code,
-            arm,
-            age: null,
-            gender: null,
-            race: null,
-            ethnicity: null
-          };
-          patients.push(patient);
-        } else {
-          patient.arm = arm; // update arm if changed
-        }
-
-        // Add arm if new
-        addArm(currentTrialId, arm);
-
-        // Add response data
-        responseData.push({
-          id: generateId(responseData),
-          patient_id: patient.id,
-          product_id: null,
-          response_type,
-          response_value,
-          recorded_at: new Date().toISOString()
-        });
-
-        // Add reference if provided
-        if (source_name && reference_link) {
-          addReference(currentTrialId, 'responseData', source_name, reference_link);
-        }
-
-        showResponseFormMessage('Response data added successfully.');
-        loadTabContent('responseData');
-      });
-
-      function resetResponseForm() {
-        const form = document.getElementById('addResponseForm');
-        form.reset();
-        showResponseFormMessage('');
-      }
-      function showResponseFormMessage(msg, isError = false) {
-        const el = document.getElementById('responseFormMessage');
-        el.textContent = msg;
-        el.className = isError ? 'text-sm mt-2 text-red-600' : 'text-sm mt-2 text-green-600';
-        if (msg) setTimeout(() => { el.textContent = ''; }, 4000);
-      }
-    }
-
-    // === SURVIVAL DATA TAB ===
-    // Endpoint, hazard ratio, ARM1 patient N, ARM2 patient N, min max value
-    function renderSurvivalDataTab(container, trialId) {
-      const arms = getArms(trialId);
-
-      // Survival data for trial
-      const trialSurvival = survivalData.filter(sd => sd.trial_id === trialId);
-
-      // Count patients per arm
-      const armCounts = {};
-      arms.forEach(a => armCounts[a] = patients.filter(p => p.trial_id === trialId && p.arm === a).length);
-
-      let html = `
-        <div class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <h3 class="text-xl font-semibold text-blue-900">Survival Data</h3>
-          <button id="showAddSurvivalFormBtn" class="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-600 transition text-sm flex items-center gap-2">
-            <i class="fas fa-plus"></i> Add Survival Data
-          </button>
-        </div>
-      `;
-
-      if (trialSurvival.length === 0) {
-        html += `<p class="text-gray-600 italic mb-4">No survival data recorded yet.</p>`;
-      } else {
-        html += `<div class="overflow-x-auto max-h-64 scrollbar-thin border border-gray-300 rounded text-sm">
-          <table class="min-w-full border-collapse border border-gray-300">
-            <thead class="bg-blue-900 text-white">
-              <tr>
-                <th class="px-3 py-2 text-left">Endpoint Name</th>
-                <th class="px-3 py-2 text-left">Hazard Ratio</th>
-                <th class="px-3 py-2 text-left">${arms[0] || 'ARM 1'} Patient N</th>
-                <th class="px-3 py-2 text-left">${arms[1] || 'ARM 2'} Patient N</th>
-                <th class="px-3 py-2 text-left">Min Value</th>
-                <th class="px-3 py-2 text-left">Max Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${trialSurvival.map(sd => {
-                return `<tr class="border-t border-gray-200 hover:bg-gray-100">
-                  <td class="px-3 py-1">${sd.endpoint_type || ''}</td>
-                  <td class="px-3 py-1">${sd.hazard_ratio || ''}</td>
-                  <td class="px-3 py-1">${sd.arm1_patient_n !== undefined && sd.arm1_patient_n !== null ? sd.arm1_patient_n : armCounts[arms[0]] || 0}</td>
-                  <td class="px-3 py-1">${sd.arm2_patient_n !== undefined && sd.arm2_patient_n !== null ? sd.arm2_patient_n : armCounts[arms[1]] || 0}</td>
-                  <td class="px-3 py-1">${sd.min_value || ''}</td>
-                  <td class="px-3 py-1">${sd.max_value || ''}</td>
-                </tr>`;
-              }).join('')}
-            </tbody>
-          </table>
-        </div>`;
-      }
-
-      // Add Survival Data Form (hidden initially)
-      html += `
-        <form id="addSurvivalForm" class="mt-6 bg-gray-50 p-4 rounded shadow-md max-w-4xl hidden grid grid-cols-1 md:grid-cols-3 gap-4" novalidate>
-          <h4 class="md:col-span-3 text-lg font-semibold text-blue-900">Add Survival Data</h4>
-          <div>
-            <label for="survivalEndpointName" class="block font-medium mb-1">Endpoint Name *</label>
-            <input type="text" id="survivalEndpointName" name="endpoint_type" placeholder="e.g. OS, PFS" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required />
-          </div>
-          <div>
-            <label for="survivalHazardRatio" class="block font-medium mb-1">Hazard Ratio *</label>
-            <input type="number" id="survivalHazardRatio" name="hazard_ratio" step="0.01" min="0" placeholder="Hazard ratio" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required />
-          </div>
-          <div>
-            <label class="block font-medium mb-1">Patient N per ARM</label>
-            <div class="grid grid-cols-2 gap-2">
-              <div>
-                <label for="arm1PatientN" class="block text-sm font-normal mb-1">${arms[0] || 'ARM 1'}</label>
-                <input type="number" id="arm1PatientN" name="arm1_patient_n" min="0" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-              </div>
-              <div>
-                <label for="arm2PatientN" class="block text-sm font-normal mb-1">${arms[1] || 'ARM 2'}</label>
-                <input type="number" id="arm2PatientN" name="arm2_patient_n" min="0" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-              </div>
-            </div>
-          </div>
-          <div>
-            <label for="survivalMinValue" class="block font-medium mb-1">Min Value</label>
-            <input type="number" id="survivalMinValue" name="min_value" step="0.01" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div>
-            <label for="survivalMaxValue" class="block font-medium mb-1">Max Value</label>
-            <input type="number" id="survivalMaxValue" name="max_value" step="0.01" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div class="md:col-span-3">
-            <label for="survivalSourceName" class="block font-medium mb-1">Reference Source Name</label>
-            <input type="text" id="survivalSourceName" name="source_name" placeholder="Source name" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div class="md:col-span-3">
-            <label for="survivalReferenceLink" class="block font-medium mb-1">Reference Link</label>
-            <input type="url" id="survivalReferenceLink" name="reference_link" placeholder="https://example.com" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div class="md:col-span-3 flex justify-end gap-4">
-            <button type="button" id="cancelSurvivalBtn" class="bg-gray-400 text-white font-semibold rounded px-6 py-2 hover:bg-gray-500 transition">Cancel</button>
-            <button type="submit" class="bg-green-700 text-white font-semibold rounded px-6 py-2 hover:bg-green-600 transition">
-              <i class="fas fa-save mr-2"></i> Save Survival Data
-            </button>
-          </div>
-          <div id="survivalFormMessage" class="md:col-span-3 text-sm mt-2"></div>
-        </form>
-      `;
-
-      container.innerHTML = html;
-
-      document.getElementById('showAddSurvivalFormBtn').addEventListener('click', () => {
-        resetSurvivalForm();
-        document.getElementById('addSurvivalForm').classList.remove('hidden');
-        document.getElementById('survivalEndpointName').focus();
-      });
-
-      document.getElementById('cancelSurvivalBtn').addEventListener('click', () => {
-        resetSurvivalForm();
-        document.getElementById('addSurvivalForm').classList.add('hidden');
-      });
-
-      document.getElementById('addSurvivalForm').addEventListener('submit', e => {
-        e.preventDefault();
-        const form = e.target;
-        const endpoint_type = form.endpoint_type.value.trim();
-        const hazard_ratio = form.hazard_ratio.value.trim();
-        const arm1_patient_n = form.arm1_patient_n.value.trim();
-        const arm2_patient_n = form.arm2_patient_n.value.trim();
-        const min_value = form.min_value.value.trim();
-        const max_value = form.max_value.value.trim();
-        const source_name = form.source_name.value.trim() || null;
-        const reference_link = form.reference_link.value.trim() || null;
-
-        if (!endpoint_type || !hazard_ratio) {
-          showSurvivalFormMessage('Endpoint Name and Hazard Ratio are required.', true);
-          return;
-        }
-
-        // Save survival data as one record per trial (simplified)
-        survivalData.push({
-          id: generateId(survivalData),
-          patient_id: null,
-          trial_id: currentTrialId,
-          endpoint_type,
-          hazard_ratio,
-          arm1_patient_n: arm1_patient_n ? parseInt(arm1_patient_n) : null,
-          arm2_patient_n: arm2_patient_n ? parseInt(arm2_patient_n) : null,
-          min_value: min_value ? parseFloat(min_value) : null,
-          max_value: max_value ? parseFloat(max_value) : null
-        });
-
-        if (source_name && reference_link) {
-          addReference(currentTrialId, 'survivalData', source_name, reference_link);
-        }
-
-        showSurvivalFormMessage('Survival data added successfully.');
-        loadTabContent('survivalData');
-      });
-
-      function resetSurvivalForm() {
-        const form = document.getElementById('addSurvivalForm');
-        form.reset();
-        showSurvivalFormMessage('');
-      }
-      function showSurvivalFormMessage(msg, isError = false) {
-        const el = document.getElementById('survivalFormMessage');
-        el.textContent = msg;
-        el.className = isError ? 'text-sm mt-2 text-red-600' : 'text-sm mt-2 text-green-600';
-        if (msg) setTimeout(() => { el.textContent = ''; }, 4000);
-      }
-    }
-
-    // === REGULATORY ANNOUNCEMENTS TAB ===
-    // Reference link, reference name, date published, description box
-    function renderRegulatoryEventsTab(container, trialId) {
-      const trialRegs = regulatoryEvents.filter(re => re.trial_id === trialId);
-
-      let html = `
-        <div class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <h3 class="text-xl font-semibold text-blue-900">Regulatory Announcements</h3>
-          <button id="showAddRegulatoryFormBtn" class="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-600 transition text-sm flex items-center gap-2">
-            <i class="fas fa-plus"></i> Add Announcement
-          </button>
-        </div>
-      `;
-
-      if (trialRegs.length === 0) {
-        html += `<p class="text-gray-600 italic mb-4">No regulatory announcements recorded yet.</p>`;
-      } else {
-        html += `<div class="overflow-x-auto max-h-64 scrollbar-thin border border-gray-300 rounded text-sm">
-          <table class="min-w-full border-collapse border border-gray-300">
-            <thead class="bg-blue-900 text-white">
-              <tr>
-                <th class="px-3 py-2 text-left">Reference Name</th>
-                <th class="px-3 py-2 text-left">Reference Link</th>
-                <th class="px-3 py-2 text-left">Date Published</th>
-                <th class="px-3 py-2 text-left">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${trialRegs.map(re => `
-                <tr class="border-t border-gray-200 hover:bg-gray-100">
-                  <td class="px-3 py-1">${re.reference_name || ''}</td>
-                  <td class="px-3 py-1"><a href="${re.reference_link}" target="_blank" rel="noopener noreferrer" class="text-blue-700 underline break-all">${re.reference_link}</a></td>
-                  <td class="px-3 py-1">${re.date_published || ''}</td>
-                  <td class="px-3 py-1">${re.description || ''}</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>`;
-      }
-
-      // Add Regulatory Announcement Form (hidden initially)
-      html += `
-        <form id="addRegulatoryForm" class="mt-6 bg-gray-50 p-4 rounded shadow-md max-w-4xl hidden grid grid-cols-1 md:grid-cols-2 gap-4" novalidate>
-          <h4 class="md:col-span-2 text-lg font-semibold text-blue-900">Add Regulatory Announcement</h4>
-          <div>
-            <label for="regulatoryReferenceName" class="block font-medium mb-1">Reference Name *</label>
-            <input type="text" id="regulatoryReferenceName" name="reference_name" placeholder="Reference name" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required />
-          </div>
-          <div>
-            <label for="regulatoryReferenceLink" class="block font-medium mb-1">Reference Link *</label>
-            <input type="url" id="regulatoryReferenceLink" name="reference_link" placeholder="https://example.com" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required />
-          </div>
-          <div>
-            <label for="regulatoryDatePublished" class="block font-medium mb-1">Date Published</label>
-            <input type="date" id="regulatoryDatePublished" name="date_published" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          </div>
-          <div class="md:col-span-2">
-            <label for="regulatoryDescription" class="block font-medium mb-1">Description</label>
-            <textarea id="regulatoryDescription" name="description" rows="3" placeholder="Description" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 resize-y"></textarea>
-          </div>
-          <div class="md:col-span-2 flex justify-end gap-4">
-            <button type="button" id="cancelRegulatoryBtn" class="bg-gray-400 text-white font-semibold rounded px-6 py-2 hover:bg-gray-500 transition">Cancel</button>
-            <button type="submit" class="bg-green-700 text-white font-semibold rounded px-6 py-2 hover:bg-green-600 transition">
-              <i class="fas fa-save mr-2"></i> Save Announcement
-            </button>
-          </div>
-          <div id="regulatoryFormMessage" class="md:col-span-2 text-sm mt-2"></div>
-        </form>
-      `;
-
-      container.innerHTML = html;
-
-      document.getElementById('showAddRegulatoryFormBtn').addEventListener('click', () => {
-        resetRegulatoryForm();
-        document.getElementById('addRegulatoryForm').classList.remove('hidden');
-        document.getElementById('regulatoryReferenceName').focus();
-      });
-
-      document.getElementById('cancelRegulatoryBtn').addEventListener('click', () => {
-        resetRegulatoryForm();
-        document.getElementById('addRegulatoryForm').classList.add('hidden');
-      });
-
-      document.getElementById('addRegulatoryForm').addEventListener('submit', e => {
-        e.preventDefault();
-        const form = e.target;
-        const reference_name = form.reference_name.value.trim();
-        const reference_link = form.reference_link.value.trim();
-        const date_published = form.date_published.value || null;
-        const description = form.description.value.trim() || null;
-
-        if (!reference_name || !reference_link) {
-          showRegulatoryFormMessage('Reference name and link are required.', true);
-          return;
-        }
-
-        regulatoryEvents.push({
-          id: generateId(regulatoryEvents),
-          trial_id: currentTrialId,
-          reference_name,
-          reference_link,
-          date_published,
-          description
-        });
-
-        addReference(currentTrialId, 'regulatoryEvents', reference_name, reference_link);
-
-        showRegulatoryFormMessage('Regulatory announcement added successfully.');
-        loadTabContent('regulatoryEvents');
-      });
-
-      function resetRegulatoryForm() {
-        const form = document.getElementById('addRegulatoryForm');
-        form.reset();
-        showRegulatoryFormMessage('');
-      }
-      function showRegulatoryFormMessage(msg, isError = false) {
-        const el = document.getElementById('regulatoryFormMessage');
-        el.textContent = msg;
-        el.className = isError ? 'text-sm mt-2 text-red-600' : 'text-sm mt-2 text-green-600';
-        if (msg) setTimeout(() => { el.textContent = ''; }, 4000);
-      }
-    }
-
-    // === REFERENCES TAB ===
-    // Show all references from all tabs with hyperlinks
-    function renderReferencesTab(container, trialId) {
-      const trialRefs = references.filter(r => r.trial_id === trialId);
-
-      let html = `
-        <h3 class="text-xl font-semibold text-blue-900 mb-4">All References</h3>
-      `;
-
-      if (trialRefs.length === 0) {
-        html += `<p class="text-gray-600 italic">No references added yet.</p>`;
-      } else {
-        html += `<ul class="list-disc list-inside space-y-2 text-sm">`;
-        trialRefs.forEach(r => {
-          html += `<li>
-            <strong>[${r.tab}]</strong> 
-            <a href="${r.link}" target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">${r.source_name}</a>
-          </li>`;
-        });
-        html += `</ul>`;
-      }
-
-      container.innerHTML = html;
-    }
-
-    // Initialize product tags select on page load
+    // Initialize dynamic inputs on page load
     window.addEventListener('load', () => {
-      populateProductTags();
+      // Initialize add trial form dynamic inputs with one input each
+      const addOtherStudyIdsContainer = document.getElementById('addOtherStudyIdsContainer');
+      addOtherStudyIdsContainer.innerHTML = '';
+      const firstOtherStudyInput = document.createElement('input');
+      firstOtherStudyInput.type = 'text';
+      firstOtherStudyInput.name = 'other_study_id';
+      firstOtherStudyInput.placeholder = 'Other Study ID';
+      firstOtherStudyInput.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      addOtherStudyIdsContainer.appendChild(firstOtherStudyInput);
+
+      const addIndicationsContainer = document.getElementById('addIndicationsContainer');
+      addIndicationsContainer.innerHTML = '';
+      const firstIndicationInput = document.createElement('input');
+      firstIndicationInput.type = 'text';
+      firstIndicationInput.name = 'indication';
+      firstIndicationInput.placeholder = 'Indication';
+      firstIndicationInput.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      addIndicationsContainer.appendChild(firstIndicationInput);
+
+      const productTagsContainer = document.getElementById('productTagsContainer');
+      productTagsContainer.innerHTML = '';
+      const firstProductTagInput = document.createElement('input');
+      firstProductTagInput.type = 'text';
+      firstProductTagInput.name = 'product_tag';
+      firstProductTagInput.placeholder = 'Product name';
+      firstProductTagInput.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      productTagsContainer.appendChild(firstProductTagInput);
+
+      // Initialize search form dynamic inputs with one input each
+      const searchOtherStudyIdsContainer = document.getElementById('searchOtherStudyIdsContainer');
+      searchOtherStudyIdsContainer.innerHTML = '';
+      const firstSearchOtherStudyInput = document.createElement('input');
+      firstSearchOtherStudyInput.type = 'text';
+      firstSearchOtherStudyInput.name = 'other_study_id';
+      firstSearchOtherStudyInput.placeholder = 'Other Study ID';
+      firstSearchOtherStudyInput.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      searchOtherStudyIdsContainer.appendChild(firstSearchOtherStudyInput);
+
+      const searchIndicationsContainer = document.getElementById('searchIndicationsContainer');
+      searchIndicationsContainer.innerHTML = '';
+      const firstSearchIndicationInput = document.createElement('input');
+      firstSearchIndicationInput.type = 'text';
+      firstSearchIndicationInput.name = 'indication';
+      firstSearchIndicationInput.placeholder = 'Indication';
+      firstSearchIndicationInput.className = 'w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600';
+      searchIndicationsContainer.appendChild(firstSearchIndicationInput);
     });
   </script>
 </body>
